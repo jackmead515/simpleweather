@@ -7,10 +7,9 @@ import StartView from './components/StartView';
 import FullView from './components/FullView';
 import TenView from './components/TenView';
 import Menu from './components/Menu';
-import SideMenu from './components/Menu';
+import SideMenu from './components/SideMenu';
 
 export default class App extends React.Component {
-
   /**
     View:
       0 = <StartView />
@@ -79,14 +78,11 @@ export default class App extends React.Component {
           ref={(_sidemenu) => this.sidemenu = _sidemenu}
           drawerWidth={200}
           drawerPosition={DrawerLayoutAndroid.positions.Left}
-          renderNavigationView={() => <SideMenu />}
-       >
-         <View style={styles.container}>
-           <Menu
-             onPressHam={this.openSideMenu.bind(this)}
-           />
-           {jsx}
-         </View>
+          renderNavigationView={() => <SideMenu />}>
+             <View style={styles.container}>
+               <Menu onPressHam={this.openSideMenu.bind(this)}/>
+               {jsx}
+             </View>
        </DrawerLayoutAndroid>
 
     );

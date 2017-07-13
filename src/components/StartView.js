@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TextInput, StyleSheet } from 'react-native';
 
-import user from './../user/user';
+import {saveZip} from './../user/user';
 import {fetchTenDayForecast} from './../util/weather';
 
 import Button from './Button';
@@ -19,6 +19,11 @@ export default class StartView extends React.Component {
 
     fetchTenDayForecast(this.state.zip).then((data) => {
       this.setState({'spinner': 0});
+
+      saveZip(this.state.zip).then(() => {
+      }).catch((err) => {
+        console.log(err);
+      })
 
       this.props.changePage(2, data, this.state.zip);
     }).catch((err) => {
@@ -109,9 +114,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   input: {
-    backgroundColor: '#e8e8e8',
-    borderRadius: 3,
-    marginLeft: 20,
-    marginRight: 20
+    marginLeft: 40,
+    marginRight: 40
   }
 });

@@ -7,7 +7,18 @@ import {fetchIcon, fetchLocation} from './../util/weather';
 export default class TenView extends React.Component {
 
   state = {
-    'area': ''
+    'area': this.props.weatherData.city.name + ', ' + this.props.weatherData.city.country
+  }
+
+  componentWillMount() {
+    let area = this.props.weatherData.city.name + ',' + this.props.weatherData.city.country;
+
+    fetchLocation(this.props.zip).then((json) => {
+      //City, State, Country
+      this.setState({'area': json.formatted_address});
+    }).catch((err) => {
+      this.setState({'area': area})
+    });
   }
 
   renderWeather() {
@@ -23,17 +34,6 @@ export default class TenView extends React.Component {
       );
     });
   };
-
-  renderArea() {
-    let area = this.props.weatherData.city.name + ',' + this.props.weatherData.city.country;
-
-    fetchLocation(this.props.zip).then((json) => {
-      this.setState({'area': json.formatted_address});
-    }).catch((err) => {
-      this.setState({'area': area});
-    });
-  }
-
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -55,5 +55,10 @@ const styles = StyleSheet.create({
   areaContainer: {
     flex: 1,
     justifyContent: 'space-around'
+  },
+  area: {
+    fontSize: 30,
+    alignSelf: 'center',
+    fontWeight: 'bold'
   }
 });

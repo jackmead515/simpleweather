@@ -41,11 +41,11 @@ const fetchIcon = (icon) => {
 
 const fetchLocation = (zip) => {
   return new Promise((resolve, reject) => {
-    let request = 'http://maps.googleapis.com/maps/api/geocode/json?address='+zip;
+    let request = 'https://maps.googleapis.com/maps/api/geocode/json?address='+zip;
     fetch(request)
     .then((res) => res.json())
     .then((rjson) => {
-      resolve(rjson);
+      resolve(rjson.results[0]);
     })
     .catch((err) => {
       reject(err);

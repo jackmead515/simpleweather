@@ -8,15 +8,6 @@ import SideMenu from './SideMenu';
 export default class Menu extends React.Component {
 
   render() {
-
-    let hamIcon = (
-      <MenuIcon
-        style={styles.menuIcon}
-        onPress={() => {}}
-        source={require('./../img/menu.png')}
-      />
-    );
-
     return (
       <View style={styles.container}>
         <MenuIcon
