@@ -1,35 +1,37 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView} from 'react-native';
-
-import {locations, deleteZip} from './../user/user';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, BackHandler} from 'react-native';
 
 export default class SideMenu extends Component {
-
-  renderLocations() {
-    locations().then((locations) => {
-      return locations.map((l) => {
-        return (
-          <Text>
-            {l.zip}
-          </Text>
-        );
-      });
-    }).catch((err) => {
-      console.log(err);
-    })
-  };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>
+        <Text style={styles.title}>
           Locations
         </Text>
         <ScrollView style={styles.locationsContainer}>
-          {this.renderLocations()}
+            {this.props.renderLocations()}
         </ScrollView>
+        <View style={styles.extra}>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={styles.sideButton}
+          >
+            <Text>
+              About
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => BackHandler.exitApp()}
+            style={styles.sideButton}
+          >
+            <Text>
+              Exit
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
@@ -46,8 +48,22 @@ const styles = StyleSheet.create({
     borderColor: '#e8e8e8',
     margin: 5
   },
-  text: {
-    fontSize: 40,
+  title: {
+    fontSize: 30,
     alignSelf: 'center'
+  },
+  extra: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end'
+  },
+  sideButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 7,
+    borderRadius: 5,
+    borderStyle: 'solid',
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    margin: 5
   }
 });

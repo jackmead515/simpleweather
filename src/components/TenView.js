@@ -2,27 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 import CompactWeather from './CompactWeather';
-import {fetchIcon, fetchLocation} from './../util/weather';
+import {fetchIcon} from './../util/weather';
+import {fetchLocationObj} from './../user/user';
 
 export default class TenView extends React.Component {
 
-  state = {
-    'area': this.props.weatherData.city.name + ', ' + this.props.weatherData.city.country
-  }
-
-  componentWillMount() {
-    let area = this.props.weatherData.city.name + ',' + this.props.weatherData.city.country;
-
-    fetchLocation(this.props.zip).then((json) => {
-      //City, State, Country
-      this.setState({'area': json.formatted_address});
-    }).catch((err) => {
-      this.setState({'area': area})
-    });
-  }
-
   renderWeather() {
-    let obj = this.props.weatherData;
+    let obj = this.props.weather;
 
     return obj.list.map((day) => {
       return (
@@ -34,12 +20,13 @@ export default class TenView extends React.Component {
       );
     });
   };
+
   render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.areaContainer}>
           <Text style={styles.area}>
-            {this.state.area}
+            {this.props.weather.city.name}, {this.props.weather.city.country}
           </Text>
         </View>
         {this.renderWeather()}
@@ -54,7 +41,7 @@ const styles = StyleSheet.create({
   },
   areaContainer: {
     flex: 1,
-    justifyContent: 'space-around'
+    flexWrap: 'nowrap'
   },
   area: {
     fontSize: 30,

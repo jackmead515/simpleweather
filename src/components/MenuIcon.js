@@ -10,10 +10,18 @@ const MenuIcon = (props) => (
         underlayColor={'#4d94ff'}
     >
       <Image
-        style={props.style}
+        style={styles.menuIcon}
         source={props.source}
       />
     </TouchableHighlight>
 );
 
 export default MenuIcon;
+
+const styles = StyleSheet.create({
+  menuIcon: {
+    height: 20,
+    width: 20,
+    margin: 10
+  }
+});

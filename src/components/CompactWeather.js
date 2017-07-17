@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image} from 'react-native';
 import moment from 'moment';
 
 const CompactWeather = (props) => {
@@ -11,25 +11,25 @@ const CompactWeather = (props) => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.date}>
-          {moment.utc(date).format('MMMM Do')}
-        </Text>
-        <Text style={styles.description}>
-          {description}
-        </Text>
-      </View>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={{uri: props.image}}
-        />
-      </View>
-      <View style={styles.tempContainer}>
-        <Text style={styles.temp}>
-          {temp} F
-        </Text>
-      </View>
+        <View>
+          <Text style={styles.date}>
+            {moment.utc(date).format('MMMM Do')}
+          </Text>
+          <Text style={styles.description}>
+            {description}
+          </Text>
+        </View>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{uri: props.image}}
+          />
+        </View>
+        <View style={styles.tempContainer}>
+          <Text style={styles.temp}>
+            {temp} F
+          </Text>
+        </View>
     </View>
   );
 };
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#e8e8e8',
     backgroundColor: 'white',
     margin: 5,
     padding: 5
