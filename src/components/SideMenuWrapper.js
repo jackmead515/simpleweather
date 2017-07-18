@@ -102,5 +102,5 @@ export default class SideMenuWrapper extends Component {
         {this.props.children}
       </DrawerLayoutAndroid>
     );
-  }
-}
+  };
+};

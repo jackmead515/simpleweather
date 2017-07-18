@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, DrawerLayoutAndroid, Modal, Text} from 'react-native';
 
 import {fetchLocationObj, locations} from './user/user';
-import {fetchTenDayForecast} from './util/weather';
+import {fetchCurrentDayForecast} from './util/weather';
 
 import StartView from './components/StartView';
 import FullView from './components/FullView';
@@ -23,7 +23,7 @@ export default class App extends React.Component {
 
     Weather:
       Usually is the requested location's weather to display.
-      Can also be error messaged passed into <ErrorView />
+      Can also be error message passed into <ErrorView />
   */
 
   state = {
@@ -39,7 +39,7 @@ export default class App extends React.Component {
       if(obj.locations.length > 0) {
         let zip = obj.locations[0];
           this.setState({'spinner': 1});
-        fetchTenDayForecast(zip).then((weather) => {
+        fetchCurrentDayForecast(zip).then((weather) => {
           fetchLocationObj(zip).then((location) => {
               this.setState({'view': 1, 'location': location, 'weather': weather, 'spinner': 0});
           }).catch((err) => {
@@ -123,6 +123,7 @@ export default class App extends React.Component {
         );
         break;
       case 3:
+        console.log(this.state.weather); //TODO
         pageView = (
           <ErrorView error={this.state.weather} />
         );

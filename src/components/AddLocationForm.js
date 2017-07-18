@@ -6,7 +6,7 @@ import { View,Text,StyleSheet,TextInput} from 'react-native';
 import Spinner from './Spinner';
 import Button from './Button';
 
-import {fetchTenDayForecast} from './../util/weather';
+import {fetchCurrentDayForecast} from './../util/weather';
 import {fetchLocationObj, saveZip} from './../user/user';
 
 
