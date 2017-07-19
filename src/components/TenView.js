@@ -23,14 +23,16 @@ export default class TenView extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View>
         <View style={styles.areaContainer}>
           <Text style={styles.area}>
-            {this.props.weather.city.name}, {this.props.weather.city.country}
+            {this.props.weather.city.name}, {this.props.weather.city.country} {this.props.location.zip}
           </Text>
         </View>
-        {this.renderWeather()}
-      </ScrollView>
+        <ScrollView style={styles.container}>
+          {this.renderWeather()}
+        </ScrollView>
+      </View>
     );
   };
 };
@@ -40,12 +42,15 @@ const styles = StyleSheet.create({
 
   },
   areaContainer: {
-    flex: 1,
-    flexWrap: 'nowrap'
+    padding: 10,
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    borderStyle: 'solid'
   },
   area: {
     fontSize: 30,
     alignSelf: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#4d4d4d'
   }
 });

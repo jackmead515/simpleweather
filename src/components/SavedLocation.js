@@ -19,7 +19,7 @@ const SavedLocation = (props) => {
           onPress={props.onPressArea}
           style={styles.areaContainer}
         >
-            <Text>
+            <Text style={{color: '#4d4d4d'}}>
               {props.location.area}
             </Text>
         </TouchableOpacity>
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#e8e8e8',
-    margin: 5
+    margin: 5,
+    backgroundColor: 'white'
   },
   imageContainer: {
     justifyContent: 'center',

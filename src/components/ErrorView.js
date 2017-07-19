@@ -6,6 +6,7 @@ import { View, Text, StyleSheet} from 'react-native';
 const ErrorView = (props) => (
   <View style={styles.container}>
     <Text>An Error Occured</Text>
+    <Text>Please check your network connection</Text>
   </View>
 );
 

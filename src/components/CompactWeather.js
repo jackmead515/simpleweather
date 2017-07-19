@@ -6,8 +6,9 @@ const CompactWeather = (props) => {
   //TODO
   let weather = props.weather;
   let date = parseInt(weather.dt + '000');
-  let description = weather.weather[0].main;
+  let description = weather.weather[0].description;
   let temp = weather.temp.day;
+  let deg = '\u00B0';
 
   return (
     <View style={styles.container}>
@@ -27,7 +28,7 @@ const CompactWeather = (props) => {
         </View>
         <View style={styles.tempContainer}>
           <Text style={styles.temp}>
-            {temp} F
+            {temp} {deg}F
           </Text>
         </View>
     </View>
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
     borderColor: '#e8e8e8',
     backgroundColor: 'white',
     margin: 5,
-    padding: 5
+    padding: 5,
+    backgroundColor: '#e6f0ff'
   },
   descriptionContainer: {
     flexDirection: 'column',
@@ -62,7 +64,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   temp: {
-    fontSize: 20
+    fontSize: 20,
+    color: '#4d4d4d'
   },
   image: {
     height: 70,
@@ -70,11 +73,13 @@ const styles = StyleSheet.create({
   },
   date: {
       fontSize: 22,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      color: '#4d4d4d'
   },
   description: {
     marginLeft: 10,
-    fontSize: 20
+    fontSize: 15,
+    color: '#4d4d4d'
   }
 });
 

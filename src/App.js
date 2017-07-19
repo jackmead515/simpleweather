@@ -68,12 +68,12 @@ export default class App extends React.Component {
     this.sidemenu.closeDrawer();
   };
 
-  toggleModal() {
-    this.setState({'modalVisible': !this.state.modalVisible});
-  };
-
   closeModal() {
     this.setState({'modalVisible': false});
+  };
+
+  openModal() {
+    this.setState({'modalVisible': true});
   };
 
   changePage(page, weather, location) {
@@ -105,6 +105,7 @@ export default class App extends React.Component {
           <FullView
             weather={this.state.weather}
             location={this.state.location}
+            onPressPlus={this.openModal.bind(this)}
             beginLoad={() => this.beginLoad()}
             endLoad={() => this.endLoad()}
             changePage={(p, w, l) => this.changePage(p, w, l)}
@@ -123,10 +124,10 @@ export default class App extends React.Component {
         );
         break;
       case 3:
-        console.log(this.state.weather); //TODO
         pageView = (
           <ErrorView error={this.state.weather} />
         );
+        console.log(this.state.weather); // For Developer Debugging
         break;
       default:
         break;
@@ -147,11 +148,11 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <Menu
             onPressHam={this.openSideMenu.bind(this)}
-            onPressPlus={this.toggleModal.bind(this)}
+            onPressPlus={this.openModal.bind(this)}
           />
           <LocationModal
               visible={this.state.modalVisible}
-              onRequestClose={this.toggleModal.bind(this)}
+              onRequestClose={this.closeModal.bind(this)}
               beginLoad={() => {
                 this.beginLoad();
                 this.closeModal();
