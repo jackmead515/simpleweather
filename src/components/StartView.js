@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, Image, TextInput, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 import AddLocationForm from './AddLocationForm';
 
 export default class StartView extends React.Component {
-
   render() {
     return (
       <View style={styles.container}>
@@ -23,7 +22,7 @@ export default class StartView extends React.Component {
         </View>
       </View>
     );
-  }
+  };
 };
 
 const styles = StyleSheet.create({

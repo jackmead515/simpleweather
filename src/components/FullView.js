@@ -5,8 +5,6 @@ import moment from 'moment';
 import {fetchTenDayForecast} from './../util/weather';
 import {fetchLocationObj} from './../user/user';
 
-import StartView from './StartView';
-import TenView from './TenView';
 import Button from './Button';
 
 export default class FullView extends React.Component {
@@ -28,12 +26,10 @@ export default class FullView extends React.Component {
           fetchLocationObj(this.props.location.zip).then((location) => {
               this.props.changePage(2, weather, location);
           }).catch((err) => {
-            //TODO Pass in error
             this.props.endLoad();
             this.props.changePage(3, err);
           });
         }).catch((err) => {
-          //TODO Pass in error
           this.props.endLoad();
           this.props.changePage(3, err);
         });

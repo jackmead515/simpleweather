@@ -1,19 +1,15 @@
 /* @flow weak */
 
 import React from 'react';
-import {View, Image, StyleSheet, TouchableHighlight} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 const MenuIcon = (props) => (
-    <TouchableHighlight
-        onPress={props.onPress}
-        activeOpacity={0.3}
-        underlayColor={'#4d94ff'}
-    >
+    <TouchableOpacity onPress={props.onPress}>
       <Image
         style={styles.menuIcon}
         source={props.source}
       />
-    </TouchableHighlight>
+    </TouchableOpacity>
 );
 
 export default MenuIcon;

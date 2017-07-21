@@ -26,8 +26,7 @@ export default class SideMenuWrapper extends Component {
         this.generateJSXAreas(zip, locs);
       });
     }).catch((err) => {
-      //TODO
-      console.log(err);
+      // Failed to fetch side menu locations
     });
   };
 
@@ -45,16 +44,13 @@ export default class SideMenuWrapper extends Component {
               fetchLocationObj(zip).then((obj) => {
                 this.props.changePage(1, weather, obj);
               }).catch((err) => {
-                //TODO pass in err
                 this.props.endLoad();
                 this.props.changePage(3, err);
                 console.log(err);
               });
             }).catch((err) => {
-              //TODO pass in err
               this.props.endLoad();
               this.props.changePage(3, err);
-              console.log(err);
             });
           }}
         />
@@ -62,9 +58,7 @@ export default class SideMenuWrapper extends Component {
       locs.push(jsk);
       this.setState({'locations': locs});
     }).catch((err) => {
-      //TODO pass in error
       this.props.changePage(3, err);
-      console.log(err);
     });
   };
 

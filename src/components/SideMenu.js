@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, BackHandler, Alert} from 'react-native';
-import rnfs from 'react-native-fs';
+// import rnfs from 'react-native-fs';
 
 export default class SideMenu extends Component {
 

@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { View,Text,StyleSheet,TextInput} from 'react-native';
 
-import Spinner from './Spinner';
 import Button from './Button';
 
 import {fetchCurrentDayForecast} from './../util/weather';
@@ -26,16 +25,12 @@ export default class AddLocationForm extends Component {
               this.props.changePage(1, weather, obj);
             });
         }).catch((err) => {
-          //TODO Pass in error
           this.props.endLoad();
           this.props.changePage(3, err);
-          console.log(err);
         });
     }).catch((err) => {
-      //TODO pass in error
       this.props.endLoad();
       this.props.changePage(3, err);
-      console.log(err);
     });
   };
 

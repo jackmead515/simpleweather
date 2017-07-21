@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, DrawerLayoutAndroid, Modal, Text} from 'react-native';
+import { View, StyleSheet} from 'react-native';
 
 import {fetchLocationObj, locations} from './user/user';
 import {fetchCurrentDayForecast} from './util/weather';
@@ -43,11 +43,9 @@ export default class App extends React.Component {
           fetchLocationObj(zip).then((location) => {
               this.setState({'view': 1, 'location': location, 'weather': weather, 'spinner': 0});
           }).catch((err) => {
-            //TODO Pass in error
               this.setState({'view': 3, 'spinner': 0, 'weather': err});
           });
         }).catch((err) => {
-          //TODO Pass in error
           this.setState({'view': 3, 'spinner': 0, 'weather': err});
         });
       } else {
@@ -55,7 +53,6 @@ export default class App extends React.Component {
         this.setState({'view': 0});
       }
     }).catch((err) => {
-      //TODO pass in error
       this.setState({'view': 3, 'weather': err});
     });
   };
@@ -160,9 +157,7 @@ export default class App extends React.Component {
               endLoad={() => this.endLoad()}
               changePage={(p, w, l) => this.changePage(p, w, l)}
            />
-
           {pageView}
-
         </View>
       </SideMenuWrapper>
     );

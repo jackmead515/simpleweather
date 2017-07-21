@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Image} from 'react-native';
 import moment from 'moment';
 
 const CompactWeather = (props) => {
-  //TODO
   let weather = props.weather;
   let date = parseInt(weather.dt + '000');
   let description = weather.weather[0].description;
